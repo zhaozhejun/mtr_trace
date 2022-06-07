@@ -9,7 +9,7 @@ yum clean all && yum makecache && yum install mtr -y
 clear
 echo -e "\n正在测试,请稍等..."
 echo -e "——————————————————————————————\n"
-for i in {0..8}; do
+for i in {0..11}; do
 	mtr -r --n --tcp ${iplise[i]} > /root/traceroute_testlog
 	grep -q "59\.43\." /root/traceroute_testlog
 	if [ $? == 0 ];then
@@ -64,5 +64,5 @@ for i in {0..8}; do
 	fi
 echo 
 done
-rm -f /root/traceroute_testlog
+# rm -f /root/traceroute_testlog
 echo -e "\n——————————————————————————————\n本脚本测试结果为TCP回程路由,非ICMP回程路由 仅供参考 谢谢\n"
