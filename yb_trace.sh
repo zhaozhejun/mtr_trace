@@ -1,6 +1,6 @@
 echo -e "\n该小工具可以为你检查本服务器到中国延边、北京、上海、深圳的[回程网络]类型\n"
 read -p "按Enter(回车)开始启动检查..." sdad
-rm -f /root/traceroute_testlog
+
 iplise=(222.169.19.1 119.50.158.1 111.26.166.1 219.141.136.12 202.106.50.1 221.179.155.161 202.96.209.133 210.22.97.1 211.136.112.200 58.60.188.222 210.21.196.6 120.196.165.24)
 iplocal=(延边电信 延边联通 延边移动 北京电信 北京联通 北京移动 上海电信 上海联通 上海移动 深圳电信 深圳联通 深圳移动)
 echo "开始安装mtr命令..."
@@ -10,8 +10,8 @@ clear
 echo -e "\n正在测试,请稍等..."
 echo -e "——————————————————————————————\n"
 for i in {0..2}; do
-		mtr -r --n --tcp ${iplise[i]} > /root/traceroute_testlog
-	        grep -q "59\.43\." /root/traceroute_testlog
+	mtr -r --n --tcp ${iplise[i]} > /root/traceroute_testlog
+	grep -q "59\.43\." /root/traceroute_testlog
 	if [ $? == 0 ];then
 		grep -q "202\.97\."  /root/traceroute_testlog
 		if [ $? == 0 ];then
